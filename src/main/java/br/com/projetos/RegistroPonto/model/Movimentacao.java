@@ -21,9 +21,14 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode
 @AllArgsConstructor
-@NoArgsConstructor
-public class Movimentacao {
+
+public class Movimentacao implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Embeddable
 	@Getter
 	@Setter	
@@ -35,6 +40,10 @@ public class Movimentacao {
 		private static final long serialVersionUID = 1L;		
 		private Long idMovimento; 		
 		private Long idUsuario; 
+		
+	}
+	
+	public Movimentacao() {
 		
 	}
 
@@ -51,7 +60,6 @@ public class Movimentacao {
 	@ManyToOne
 	private Ocorrencia ocorrencia; 
 	
-	@ManyToOne
-	private Calendario calendario; 
+	
 	
 }

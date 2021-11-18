@@ -1,5 +1,6 @@
 package br.com.projetos.RegistroPonto.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -22,8 +23,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class Usuario {
+public class Usuario implements Serializable{
 	
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id; 
@@ -44,9 +48,9 @@ public class Usuario {
 	
 	private BigDecimal tolerancia; 
 	
-	private LocalDateTime inicioJornada;
+	private LocalDateTime inicioJornada ;
 	
-	private LocalDateTime finalJornada; 
+	private LocalDateTime finalJornada ; 
 	
 	
 	
