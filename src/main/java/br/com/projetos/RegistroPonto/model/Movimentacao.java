@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class Movimentacao implements Serializable{
 	
 	/**
@@ -29,33 +30,15 @@ public class Movimentacao implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Embeddable
-	@Getter
-	@Setter	
-	@EqualsAndHashCode
-	@AllArgsConstructor
-	@NoArgsConstructor
-	public class MovimentacaoId implements Serializable{
-
-		private static final long serialVersionUID = 1L;		
-		private Long idMovimento; 		
-		private Long idUsuario; 
-		
-	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
-	public Movimentacao() {
-		
-	}
-
-	
-	@EmbeddedId
-	private MovimentacaoId id; 
+	@ManyToOne
+	private Usuario usuario;
 	
 	private LocalDateTime dataEntrada; 
 	
-	private LocalDateTime dataSaida; 
-	
-	private BigDecimal periodo; 
 	
 	@ManyToOne
 	private Ocorrencia ocorrencia; 

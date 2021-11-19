@@ -1,5 +1,7 @@
 package br.com.projetos.RegistroPonto.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Builder
-public class Empresa {
+public class Empresa implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

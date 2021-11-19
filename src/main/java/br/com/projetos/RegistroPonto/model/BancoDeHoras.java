@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,28 +24,20 @@ import lombok.Setter;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class BancoDeHoras {
+public class BancoDeHoras implements Serializable {
 	
-	@Embeddable
-	@Getter
-	@Setter	
-	@EqualsAndHashCode
-	@AllArgsConstructor
-	@NoArgsConstructor
-	public class BancoHorasId implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-		private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id; 
+	
+	@ManyToOne
+	private Movimentacao movimentacao;
 		
-		private Long idBancoDeHoras;
-		private Long idMovimento;
-		private Long idUsuario;
-		
-	}
-	
-	
-	@EmbeddedId
-	private BancoHorasId id;
-	
 	private LocalDateTime dataTrabalhada; 
 	
 	private BigDecimal quantidadeHoras;
